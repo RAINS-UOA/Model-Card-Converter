@@ -100,7 +100,8 @@ def initializeMappingTool ():
  dataTransformActivity ['prov:wasAssociatedWith'] = [];
  dataTransformActivity ['rdfs:comment'] = "Auto generated text: This activity describes the process of producing training and/or evaluation datasets.";
 
- global trainingDatasetInfoElement =createInformationElement ();
+ global trainingDatasetInfoElement
+ trainingDatasetInfoElement =createInformationElement ();
  trainingDatasetInfoElement ['@type'].append(context['mls:Dataset']);
  trainingDatasetInfoElement ['@type'].append (context['rains:ImplementedObject']);
  trainingDatasetInfoElement ['@type'].append (context['rains:RealizableObject']);
@@ -119,8 +120,8 @@ def initializeMappingTool ():
  trainingDatasetInformationRealization ['@type'].append (context['sao:InformationRealization']);
  trainingDatasetInformationRealization ['rdfs:comment'] = "Auto generated text: This information realization relates to training dataset.";
 
-
- global evalDatasetInfoElement =createInformationElement ();
+ global evalDatasetInfoElement
+ evalDatasetInfoElement =createInformationElement ();
  evalDatasetInfoElement ['@type'].append(context['mls:Dataset']);
  evalDatasetInfoElement ['@type'].append (context['rains:ImplementedObject']);
  evalDatasetInfoElement ['@type'].append (context['rains:RealizableObject']);
@@ -159,8 +160,8 @@ def initializeMappingTool ():
  model ['@type'].append (context['sao:InformationRealization']);
  model ['rdfs:comment'] = "Auto generated text: This information realization relates to model implementation.";
 
-
- global modelElement =createInformationElement ();
+ global modelElement
+ modelElement =createInformationElement ();
  modelElement ['@type'].append(context['mls:Model']);
  modelElement ['@type'].append (context['rains:RealizableObject']);
  modelElement ['@type'].append (context['rains:ImplementedObject']);
@@ -418,7 +419,7 @@ def createManualMappingTasks (json_object):
 
 
 def mapModelMetaData (json_object):
-  
+  print("hello")
   #map training dataset
   try:
     trainingDatasetInfoElement ['rdfs:label'] = json_object ["model_parameters"]["data"]["train"]["name"]
