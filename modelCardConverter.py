@@ -419,7 +419,7 @@ def createManualMappingTasks (json_object):
 
 
 def mapModelMetaData (json_object):
-  print("hello")
+  
   #map training dataset
   try:
     trainingDatasetInfoElement ['rdfs:label'] = json_object ["model_parameters"]["data"]["train"]["name"]
