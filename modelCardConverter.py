@@ -100,7 +100,7 @@ def initializeMappingTool ():
  dataTransformActivity ['prov:wasAssociatedWith'] = [];
  dataTransformActivity ['rdfs:comment'] = "Auto generated text: This activity describes the process of producing training and/or evaluation datasets.";
 
- trainingDatasetInfoElement =createInformationElement ();
+ global trainingDatasetInfoElement =createInformationElement ();
  trainingDatasetInfoElement ['@type'].append(context['mls:Dataset']);
  trainingDatasetInfoElement ['@type'].append (context['rains:ImplementedObject']);
  trainingDatasetInfoElement ['@type'].append (context['rains:RealizableObject']);
@@ -120,7 +120,7 @@ def initializeMappingTool ():
  trainingDatasetInformationRealization ['rdfs:comment'] = "Auto generated text: This information realization relates to training dataset.";
 
 
- evalDatasetInfoElement =createInformationElement ();
+ global evalDatasetInfoElement =createInformationElement ();
  evalDatasetInfoElement ['@type'].append(context['mls:Dataset']);
  evalDatasetInfoElement ['@type'].append (context['rains:ImplementedObject']);
  evalDatasetInfoElement ['@type'].append (context['rains:RealizableObject']);
@@ -160,7 +160,7 @@ def initializeMappingTool ():
  model ['rdfs:comment'] = "Auto generated text: This information realization relates to model implementation.";
 
 
- modelElement =createInformationElement ();
+ global modelElement =createInformationElement ();
  modelElement ['@type'].append(context['mls:Model']);
  modelElement ['@type'].append (context['rains:RealizableObject']);
  modelElement ['@type'].append (context['rains:ImplementedObject']);
