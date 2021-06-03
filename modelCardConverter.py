@@ -69,7 +69,7 @@ context ['sao:InformationElement']   = "https://w3id.org/sao#InformationElement"
 context ['sao:AccountableAgent']   = "https://w3id.org/sao#AccountableAgent";
 context ['sao:isAccountableFor']   = {"@id":"https://w3id.org/sao#isAccountableFor","@type": "@id"};
 #PROV CONTEXT
-context ['prov:wasDerivedFrom']   = {"@id":"http://www.w3.org/ns/prov#wasderivedFrom","@type": "@id"};
+context ['prov:wasDerivedFrom']   = {"@id":"http://www.w3.org/ns/prov#wasDerivedFrom","@type": "@id"};
 context ['prov:hadMember']   = {"@id":"http://www.w3.org/ns/prov#hadMember","@type": "@id"};
 context ['prov:wasMemberOf']   = {"@id":"http://www.w3.org/ns/prov#wasMemberOf","@type": "@id"};
 context ['prov:wasGeneratedBy']   = {"@id":"http://www.w3.org/ns/prov#wasGeneratedBy","@type": "@id"};
