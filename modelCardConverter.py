@@ -244,7 +244,7 @@ def validateSHACLCosntraints (g,BASE_URL,SYSTEM_IRI):
     entry['constraint'] = row[6]
     violatedConstraints.append(row[6])
     resultArray.append(entry)
-    print(f"Not sufficient information provided for event { entry['stepLabel'] } ({ entry['stepComment']}). \n \t \x1b[31mFAILED:\x1b[0m Constraint  {  entry['stepLabel']} ({entry['constraintComment']}) failed with the following message: \n \t \t {entry['message']}")
+    print(f"Not sufficient information provided for event { entry['stepLabel'] } ({ entry['stepComment']}). \n \t \x1b[31mFAILED:\x1b[0m Constraint  {  entry['constraintLabel']} ({entry['constraintComment']}) failed with the following message: \n \t \t {entry['message']}")
 
  #update the graph with records of which constraints have failed
  #TO DO consider checking and updating ep-plan relationships if the constraint has already been recorded as satisfied and now it failed  
