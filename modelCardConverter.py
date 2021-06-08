@@ -159,6 +159,7 @@ def initializeMappingTool ():
  model ['@type'].append (context['owl:NamedIndividual']);
  model ['@type'].append (context['sao:InformationRealization']);
  model ['rdfs:comment'] = "Auto generated text: This information realization relates to model implementation.";
+ model ['prov:wasDerivedFrom'] = trainingDatasetInformationRealization ['@id'];
 
  global modelElement
  modelElement =createInformationElement ();
@@ -190,6 +191,7 @@ def initializeMappingTool ():
  modelEvalDescription ['prov:wasGeneratedBy'] = [];
  modelEvalDescription ['prov:wasGeneratedBy'].append(modelEvalActivity)
  modelEvalDescription ['rdfs:comment'] = "Auto generated text: This information realization relates to model evaluation.";
+ modelEvalDescription ['prov:wasDerivedFrom'] = model ['@id'];
 
 
 #download the ttl file that can be imported to accountability fabric
