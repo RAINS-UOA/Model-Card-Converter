@@ -125,6 +125,7 @@ def initializeMappingTool ():
  evalDatasetInfoElement ['@type'].append(context['mls:Dataset']);
  evalDatasetInfoElement ['@type'].append (context['rains:ImplementedObject']);
  evalDatasetInfoElement ['@type'].append (context['rains:RealizableObject']);
+ evalDatasetInfoElement ['rains:hasRealizableObjectCharacteristic'] = [];
 
  global evalDatasetInformationRealization
  evalDatasetInformationRealization ={}
