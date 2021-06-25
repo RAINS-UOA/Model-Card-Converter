@@ -192,8 +192,9 @@ def initializeMappingTool ():
  modelEvalDescription ['prov:wasGeneratedBy'] = [];
  modelEvalDescription ['prov:wasGeneratedBy'].append(modelEvalActivity)
  modelEvalDescription ['rdfs:comment'] = "Auto generated text: This information realization relates to model evaluation.";
- modelEvalDescription ['prov:wasDerivedFrom'] = model ['@id'];
- modelEvalDescription ['prov:wasDerivedFrom'] = evalDatasetInformationRealization ['@id'];
+ modelEvalDescription ['prov:wasDerivedFrom'] = []
+ modelEvalDescription ['prov:wasDerivedFrom'].append(model ['@id']);
+ modelEvalDescription ['prov:wasDerivedFrom'].append(evalDatasetInformationRealization ['@id']);
 
 
 #download the ttl file that can be imported to accountability fabric
