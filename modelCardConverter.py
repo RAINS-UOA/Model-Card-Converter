@@ -199,7 +199,7 @@ def initializeMappingTool ():
 
 #download the ttl file that can be imported to accountability fabric
 def downloadAccountabilityTrace (g):
-  ttlGraph = g.serialize(format="turtle").decode("utf-8")
+  ttlGraph = g.serialize(format="turtle")
   with open('graph.ttl', 'w') as writefile:
     writefile.write(ttlGraph)
     files.download('graph.ttl') 
