@@ -42,7 +42,7 @@ context['rains:IntendedUserGroup'] = "https://w3id.org/rains#IntendedUserGroup";
 context['rains:EvaluationResult'] = "https://w3id.org/rains#EvaluationResult";
 context['rains:EvaluationMeasure'] = "https://w3id.org/rains#EvaluationMeasure";
 context['rains:RealizableObject'] = "https://w3id.org/rains#RealizableObject";
-context['rains:ImplementedObject'] = "https://w3id.org/rains#ImplementedObject";
+context['rains:RealizedObject'] = "https://w3id.org/rains#RealizedObject";
 context['rains:Limitation'] = "https://w3id.org/rains#Limitation";
 context['rains:Tradeoff'] = "https://w3id.org/rains#Tradeoff";
 context['rains:version'] = "https://w3id.org/rains#version";
@@ -103,7 +103,7 @@ def initializeMappingTool ():
  global trainingDatasetInfoElement
  trainingDatasetInfoElement =createInformationElement ();
  trainingDatasetInfoElement ['@type'].append(context['mls:Dataset']);
- trainingDatasetInfoElement ['@type'].append (context['rains:ImplementedObject']);
+ trainingDatasetInfoElement ['@type'].append (context['rains:RealizedObject']);
  trainingDatasetInfoElement ['@type'].append (context['rains:RealizableObject']);
  trainingDatasetInfoElement ['rains:hasRealizableObjectCharacteristic'] = [];
  
@@ -123,7 +123,7 @@ def initializeMappingTool ():
  global evalDatasetInfoElement
  evalDatasetInfoElement =createInformationElement ();
  evalDatasetInfoElement ['@type'].append(context['mls:Dataset']);
- evalDatasetInfoElement ['@type'].append (context['rains:ImplementedObject']);
+ evalDatasetInfoElement ['@type'].append (context['rains:RealizedObject']);
  evalDatasetInfoElement ['@type'].append (context['rains:RealizableObject']);
  evalDatasetInfoElement ['rains:hasRealizableObjectCharacteristic'] = [];
 
@@ -166,7 +166,7 @@ def initializeMappingTool ():
  modelElement =createInformationElement ();
  modelElement ['@type'].append(context['mls:Model']);
  modelElement ['@type'].append (context['rains:RealizableObject']);
- modelElement ['@type'].append (context['rains:ImplementedObject']);
+ modelElement ['@type'].append (context['rains:RealizedObject']);
  modelElement ['prov:wasMemberOf'] = model ['@id']
  #link to model implementation description collection  
  model ['prov:hadMember'].append (modelElement)
@@ -501,7 +501,7 @@ def mapModelMetaData (json_object):
     modelEvalActivity['prov:wasAssociatedWith'].append(accountableAgent)
     modelCreationActivity['prov:wasAssociatedWith'].append(accountableAgent)
     
-    #also record teh owners as information elements in the information relaization corresponding to modle component
+    #also record teh owners as information elements in the information relaization corresponding to model component
     model['prov:hadMember'].append(accountableAgent)
     accountableAgent ['prov:wasMemberOf'] = model ['@id']
     accountableAgent ['sao:isAccountableFor'] = modelElement['@id']
