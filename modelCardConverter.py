@@ -107,6 +107,7 @@ def initializeMappingTool ():
  trainingDatasetInfoElement ['@type'].append (context['rains:RealizableObject']);
  trainingDatasetInfoElement ['rains:hasRealizableObjectCharacteristic'] = [];
  
+ 
  global trainingDatasetInformationRealization
  trainingDatasetInformationRealization ={}
  trainingDatasetInformationRealization ['@id'] = base_iri+ str(uuid.uuid4());
@@ -126,6 +127,7 @@ def initializeMappingTool ():
  evalDatasetInfoElement ['@type'].append (context['rains:RealizedObject']);
  evalDatasetInfoElement ['@type'].append (context['rains:RealizableObject']);
  evalDatasetInfoElement ['rains:hasRealizableObjectCharacteristic'] = [];
+ 
 
  global evalDatasetInformationRealization
  evalDatasetInformationRealization ={}
@@ -168,6 +170,7 @@ def initializeMappingTool ():
  modelElement ['@type'].append (context['rains:RealizableObject']);
  modelElement ['@type'].append (context['rains:RealizedObject']);
  modelElement ['prov:wasMemberOf'] = model ['@id']
+
  #link to model implementation description collection  
  model ['prov:hadMember'].append (modelElement)
  
@@ -523,6 +526,7 @@ def mapModelMetaData (json_object):
    el = createInformationElement ()
    el ['@type'].append (context['dc:LicenseDocument']); 
    el['rdfs:comment']  = json_object["model_details"].pop('license')
+   el['rdfs:label']  = "License"
    el ['prov:wasMemberOf'] = model ['@id']
    model['prov:hadMember'].append(el)
   except KeyError:
@@ -570,6 +574,7 @@ def mapModelMetaData (json_object):
       el2 ['@type'].append (context['rains:EvaluationResult']);
       el2 ['@type'].append (context['mls:ModelEvaluation']);
       el2 ['rains:isEvaluationResultOf']= el;
+      el2['rdfs:label']  = "Evaluation Result"
       try:
        el['rdfs:label'] = x ["type"]
       except KeyError:
@@ -615,6 +620,7 @@ def mapModelMetaData (json_object):
      el2 ['@type'].append (context['rains:EvaluationResult']);
      el2 ['@type'].append (context['mls:ModelEvaluation']);
      el2 ['rains:isEvaluationResultOf']= el;
+     el2['rdfs:label']  = "Evaluation Result"
      try:
       el['rdfs:label'] = x ["name"]
      except KeyError:
@@ -640,6 +646,7 @@ def mapModelMetaData (json_object):
       el ['@type'].append (context['rains:Limitation']);
       el ['@type'].append (context['owl:NamedIndividual']);
       el['rdfs:comment'] = x
+      el['rdfs:label']  = "Limitation"
       el ['prov:wasMemberOf'] = model['@id']
       model['prov:hadMember'].append(el)
      except KeyError:
@@ -655,6 +662,7 @@ def mapModelMetaData (json_object):
       el ['@type'].append (context['rains:Tradeoff']);
       el ['@type'].append (context['owl:NamedIndividual']);
       el['rdfs:comment'] = x
+      el['rdfs:label']  = "Tradeoff"
       el ['prov:wasMemberOf'] = model['@id']
       model['prov:hadMember'].append(el)
      except KeyError:
@@ -668,6 +676,7 @@ def mapModelMetaData (json_object):
      el = createInformationElement ()
      el ['@type'].append (context['rains:IntendedUserGroup']);
      el['rdfs:comment'] = x
+     el['rdfs:label']  = "Intended Users"
      el ['prov:wasMemberOf'] = model ['@id']
      model['prov:hadMember'].append(el)
   except KeyError:
@@ -701,6 +710,7 @@ def update_task_results (tasks):
       el ['@type'].append(context[task['w'].value]);
       el ['@type'].append (context['owl:NamedIndividual']);
       el ['rdfs:comment'] =task['jsonElementText']
+      el['rdfs:label']  = task['w'].value
       try:
        el ['rains:hasMitigationStrategy'] = task['mitigationStrategy']
       except KeyError:
