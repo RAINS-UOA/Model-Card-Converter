@@ -90,7 +90,9 @@ def createInformationElement ():
   return el
 
 def initializeMappingTool ():
- 
+ global accountableAgent
+ accountableAgent = {} 
+
  global dataTransformActivity
  dataTransformActivity = {}
  dataTransformActivity ['@id'] = base_iri+ str(uuid.uuid4());
@@ -493,7 +495,6 @@ def mapModelMetaData (json_object):
   #create accountable agents
   try:
    for x in json_object ["model_details"]["owners"]: 
-    accountableAgent = {}
     accountableAgent ['@id'] = base_iri+ str(uuid.uuid4());
     accountableAgent ['@type'] = [];
     accountableAgent ['@type'].append (context['owl:NamedIndividual']);
