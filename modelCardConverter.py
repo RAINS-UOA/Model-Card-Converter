@@ -11,6 +11,8 @@ from rdflib import URIRef, BNode, Literal
 from rdflib import Graph
 
 base_iri= 'http://example.com/'
+accountableAgent = {}
+accountableAgent ['@id'] = base_iri+ str(uuid.uuid4());
 
 #create json-ld context fro our graph
 context = {}
@@ -90,8 +92,6 @@ def createInformationElement ():
   return el
 
 def initializeMappingTool ():
- global accountableAgent
- accountableAgent = {} 
 
  global dataTransformActivity
  dataTransformActivity = {}
@@ -495,7 +495,6 @@ def mapModelMetaData (json_object):
   #create accountable agents
   try:
    for x in json_object ["model_details"]["owners"]: 
-    accountableAgent ['@id'] = base_iri+ str(uuid.uuid4());
     accountableAgent ['@type'] = [];
     accountableAgent ['@type'].append (context['owl:NamedIndividual']);
     accountableAgent ['@type'].append (context['sao:AccountableAgent']);
@@ -527,7 +526,7 @@ def mapModelMetaData (json_object):
    el = createInformationElement ()
    el ['@type'].append (context['dc:LicenseDocument']); 
    el['rdfs:comment']  = json_object["model_details"].pop('license')
-   el['rdfs:label']  = "License"
+   el['rdfs:label']  = "License (default label)"
    el ['prov:wasMemberOf'] = model ['@id']
    model['prov:hadMember'].append(el)
   except KeyError:
@@ -575,7 +574,7 @@ def mapModelMetaData (json_object):
       el2 ['@type'].append (context['rains:EvaluationResult']);
       el2 ['@type'].append (context['mls:ModelEvaluation']);
       el2 ['rains:isEvaluationResultOf']= el;
-      el2['rdfs:label']  = "Evaluation Result"
+      el2['rdfs:label']  = "Evaluation Result (default label)"
       try:
        el['rdfs:label'] = x ["type"]
       except KeyError:
@@ -621,7 +620,7 @@ def mapModelMetaData (json_object):
      el2 ['@type'].append (context['rains:EvaluationResult']);
      el2 ['@type'].append (context['mls:ModelEvaluation']);
      el2 ['rains:isEvaluationResultOf']= el;
-     el2['rdfs:label']  = "Evaluation Result"
+     el2['rdfs:label']  = "Evaluation Result (default label)"
      try:
       el['rdfs:label'] = x ["name"]
      except KeyError:
@@ -647,7 +646,7 @@ def mapModelMetaData (json_object):
       el ['@type'].append (context['rains:Limitation']);
       el ['@type'].append (context['owl:NamedIndividual']);
       el['rdfs:comment'] = x
-      el['rdfs:label']  = "Limitation"
+      el['rdfs:label']  = "Limitation (default label)"
       el ['prov:wasMemberOf'] = model['@id']
       model['prov:hadMember'].append(el)
      except KeyError:
@@ -663,7 +662,7 @@ def mapModelMetaData (json_object):
       el ['@type'].append (context['rains:Tradeoff']);
       el ['@type'].append (context['owl:NamedIndividual']);
       el['rdfs:comment'] = x
-      el['rdfs:label']  = "Tradeoff"
+      el['rdfs:label']  = "Tradeoff (default label)"
       el ['prov:wasMemberOf'] = model['@id']
       model['prov:hadMember'].append(el)
      except KeyError:
@@ -677,7 +676,7 @@ def mapModelMetaData (json_object):
      el = createInformationElement ()
      el ['@type'].append (context['rains:IntendedUserGroup']);
      el['rdfs:comment'] = x
-     el['rdfs:label']  = "Intended Users"
+     el['rdfs:label']  = "Intended Users (default label)"
      el ['prov:wasMemberOf'] = model ['@id']
      model['prov:hadMember'].append(el)
   except KeyError:
@@ -711,7 +710,8 @@ def update_task_results (tasks):
       el ['@type'].append(context[task['w'].value]);
       el ['@type'].append (context['owl:NamedIndividual']);
       el ['rdfs:comment'] =task['jsonElementText']
-      el['rdfs:label']  = task['w'].value
+      label = task['w'].value.split(":")
+      el['rdfs:label']  = label[1]+"(default label)" 
       try:
        el ['rains:hasMitigationStrategy'] = task['mitigationStrategy']
       except KeyError:
